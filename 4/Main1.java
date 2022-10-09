@@ -13,7 +13,7 @@ public class Main1 {
 		System.out.println("elements arr: ");
 		for (int i = 0; i < len; i++) {
 			arr[i] = scanner.nextInt();
-			if (arr[i] % 2 == 1) {
+			if (arr[i] % 2 != 0) {
 				sum += arr[i];
 			}
 		}
