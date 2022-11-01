@@ -33,7 +33,7 @@ public class Lion {
 
     public static Lion newLion(Lion l1, Lion l2) {
         if (l1.age < 4 || l2.age < 4) {
-            throw new RuntimeException("Рано для детей");
+            throw new RuntimeException("Рано для детей!");
         }
 
         Random random = new Random();
