@@ -10,7 +10,7 @@ public class CasualCar extends Car {
 
     @Override
     public String toString() {
-        return "CasualCar{" + "weight=" + weight + ", horsePower=" + horsePower + ", speedFirst3Minutes=" + speedFirst3Minutes + ", speedAfter=" + speedAfter + '}';
+        return "CasualCar {" + "weight = " + weight + ", horsePower = " + horsePower + ", speedFirst3Minutes = " + speedFirst3Minutes + ", speedAfter = " + speedAfter + '}';
     }
 
     @Override

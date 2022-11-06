@@ -1,13 +1,8 @@
 public class BoostedCar extends Car {
-    private int boostStartTime = -1;
-
-    public int getBoostStartTime() {
-        return boostStartTime;
-    }
 
     public BoostedCar(double weight, double horsePower, int speedFirst3Minutes, int speedAfter, int boostStartTime){
         super(weight, horsePower, speedFirst3Minutes, speedAfter);
-        this.boostStartTime = boostStartTime;
+        super.boostStartTime = boostStartTime;
     }
 
     @Override
@@ -17,7 +12,7 @@ public class BoostedCar extends Car {
 
     @Override
     public String toString() {
-        return "F1Car{" + "weight=" + weight + ", horsePower=" + horsePower + ", speedFirst3Minutes=" + speedFirst3Minutes + ", speedAfter=" + speedAfter + '}';
+        return "BoostedCar {" + "weight = " + weight + ", horsePower = " + horsePower + ", speedFirst3Minutes = " + speedFirst3Minutes + ", speedAfter = " + speedAfter + ", boostStartTime = " + boostStartTime + '}';
     }
 
     @Override

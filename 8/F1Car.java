@@ -10,7 +10,7 @@ public class F1Car extends Car {
 
     @Override
     public String toString() {
-        return "F1Car{" + "weight=" + weight + ", horsePower=" + horsePower + ", speedFirst3Minutes=" + speedFirst3Minutes + ", speedAfter=" + speedAfter + '}';
+        return "F1Car {" + "weight = " + weight + ", horsePower = " + horsePower + ", speedFirst3Minutes = " + speedFirst3Minutes + ", speedAfter = " + speedAfter + '}';
     }
 
     @Override
