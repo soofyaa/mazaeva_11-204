@@ -86,7 +86,7 @@ public class Lion {
         try {
             return 1000 / (int) (200 - lion.weight);
         } catch (ArithmeticException e) {
-            throw new LionException("NullPointerException", e);
+            throw new LionException("Lion can't have something", e);
         }
     }
 }
