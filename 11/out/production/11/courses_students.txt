@@ -1,0 +1,5 @@
+Biology,Azat
+Biology,Ildar
+Biology,Sema
+Biology,Vanya
+Chemistry,Vanya
