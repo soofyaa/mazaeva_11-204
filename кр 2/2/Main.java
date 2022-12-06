@@ -8,9 +8,6 @@ public class Main {
         for (int i = 0; i < strings.length; i++) {
             int s = Integer.parseInt (strings[i]);
             Pattern pattern = Pattern.compile("");
-
-
-
         }
     }
 }
