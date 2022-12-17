@@ -6,6 +6,7 @@ public class Main2 {
         CasualCar casualCar = new CasualCar(1000, 450, 100, 150);
         F1Car f1Car = new F1Car(1000, 450, 60, 220);
         BoostedCar boostedCar = new BoostedCar(1000,450,80, 200, 3);
+
         System.out.println(casualCar);
         System.out.println(f1Car);
         System.out.println(boostedCar);
