@@ -1,39 +1,39 @@
 public class MyList {
     private String[] strings = new String[10];
-    private int lastFreeIndex = 0;
+    private int lastNotFreeIndex = 0;
 
     public String get(int index){
         return strings[index];
     }
 
     public int size(){
-        if (lastFreeIndex == 0) {
-            return 1;
+        if (lastNotFreeIndex == 0) {
+            return 0;
         }
-        return lastFreeIndex;
+        return lastNotFreeIndex;
     }
 
     public boolean add(String s){
-        if (lastFreeIndex + 1 >= strings.length){
+        if (lastNotFreeIndex + 1 >= strings.length){
             String[] newArray = new String[strings.length+10];
             copyArrays(strings,newArray);
             strings = newArray;
         }
-        strings[lastFreeIndex] = s;
-        lastFreeIndex++;
+        strings[lastNotFreeIndex] = s;
+        lastNotFreeIndex++;
         return true;
     }
 
     public boolean addAll(MyList otherList) {
-        if (lastFreeIndex + otherList.size() >= strings.length) {
+        if (lastNotFreeIndex + otherList.size() >= strings.length) {
             String[] newArray = new String[strings.length + otherList.size() + 1];
             copyArrays(strings,newArray);
             strings = newArray;
         }
 
         for (int i = 0; i < otherList.size(); i++) {
-            strings[lastFreeIndex] = otherList.get(i);
-            lastFreeIndex++;
+            strings[lastNotFreeIndex] = otherList.get(i);
+            lastNotFreeIndex++;
         }
         return true;
     }
@@ -51,7 +51,7 @@ public class MyList {
         int len = size() - otherList.size() + 1;
         for (int i = 0; i < len; i++) {
             for (int j = 0; j < otherList.size(); j++) {
-                if (get(i+j).equals(otherList.get(j)) && j+1 == otherList.size()) {
+                if ( get(i+j) != null && get(i+j).equals(otherList.get(j)) && j+1 == otherList.size()) {
                    return true;
                 }
             }
@@ -63,11 +63,11 @@ public class MyList {
         for (int i = 0; i < size(); i++) {
             strings[i] = null;
         }
-        lastFreeIndex = 0;
+        lastNotFreeIndex = 0;
     }
 
     public boolean isEmpty() {
-        if (lastFreeIndex == 0) {
+        if (lastNotFreeIndex == 0) {
             return true;
         }
         return false;
@@ -92,7 +92,7 @@ public class MyList {
             strings[i] = strings[i+1];
         }
         strings[len] = null;
-        lastFreeIndex--;
+        lastNotFreeIndex--;
         return s;
     }
 
@@ -104,7 +104,7 @@ public class MyList {
 
     public boolean removeAll(MyList otherList) {
         for (int i = 0; i < otherList.size(); i++) {
-            for (int j = 0; j < lastFreeIndex; j++) {
+            for (int j = 0; j < lastNotFreeIndex; j++) {
                 if (get(j).equals(otherList.get(i))) {
                     remove(j);
                     j--;
