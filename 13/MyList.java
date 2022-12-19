@@ -50,9 +50,23 @@ public class MyList {
     public boolean containsAll(MyList otherList) {
         int len = size() - otherList.size() + 1;
         for (int i = 0; i < len; i++) {
+            boolean check = true;
             for (int j = 0; j < otherList.size(); j++) {
-                if ( get(i+j) != null && get(i+j).equals(otherList.get(j)) && j+1 == otherList.size()) {
-                   return true;
+                if ((get(i) != null && otherList.get(j) != null && get(i).equals(otherList.get(j))) || (get(i) == null && otherList.get(j) == null))  {
+                    for (int k = 0; k < otherList.size(); k++) {
+                        int iK = i + k;
+                        int jK = j + k;
+                        if ((get(iK) != null && otherList.get(jK) != null && (!(get(iK).equals(otherList.get(jK))))) || (get(iK) != null && otherList.get(jK) == null) || (get(iK) == null && otherList.get(jK) != null)) {
+                            check = false;
+                            break;
+                        }
+                        if ((get(iK) != null && otherList.get(jK) != null && get(iK).equals(otherList.get(jK)) || (get(iK) == null && otherList.get(jK) == null)) && j+1 == otherList.size()) {
+                            return true;
+                        }
+                    }
+                }
+                if (!check) {
+                    break;
                 }
             }
         }
