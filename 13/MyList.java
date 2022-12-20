@@ -48,6 +48,25 @@ public class MyList {
     }
 
     public boolean containsAll(MyList otherList) {
+        int i = 0;
+        for (int j = 0; j < otherList.size(); j++) {
+            if (i < size() && ((get(i) != null && otherList.get(j) != null && get(i).equals(otherList.get(j))) || (get(i) == null && otherList.get(j) == null)))  {
+                i++;
+                if (j+1 == otherList.size()) {
+                    return true;
+                }
+            } else {
+                j = -1;
+                i++;
+                if (i >= size()) {
+                    break;
+                }
+            }
+        }
+        return false;
+    }
+
+  /*  public boolean containsAll(MyList otherList) {
         int len = size() - otherList.size() + 1;
         for (int i = 0; i < len; i++) {
             boolean check = true;
@@ -72,6 +91,8 @@ public class MyList {
         }
         return false;
     }
+
+   */
 
     public void clear() {
         for (int i = 0; i < size(); i++) {
