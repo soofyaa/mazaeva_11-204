@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 public class MyLinkedList<T> {
     private Node<T> firstNode;
     private Node<T> lastNode;
@@ -19,6 +21,21 @@ public class MyLinkedList<T> {
         pointer++;
         return true;
     }
+
+    /*
+    public void add(int index, T value) {
+        Node<T> currentNode = firstNode;
+        for (int i = 0; i < index; i++) {
+            currentNode = currentNode.getNext();
+        }
+        Node<T> needNode = new Node<>(value, currentNode.getNext());
+        currentNode.getNext() = needNode;
+        pointer++;
+
+
+    }
+
+     */
 
     public boolean addAll(MyLinkedList<T> otherList) {
         for (Node<T> i = otherList.getFirstNode(); i != null; i = i.getNext()) {
@@ -183,5 +200,20 @@ public class MyLinkedList<T> {
         } else {
             return false;
         }
+    }
+
+    public void sort(Comparator<? super T> comparator) {
+        boolean permutation;
+        do {
+            permutation = false;
+            for (Node<T> i = firstNode; i.getNext() != null; i = i.getNext()) {
+                if (comparator.compare(i.getValue(), i.getNext().getValue()) > 0) {
+                    Node<T> currNode = new Node<>(i.getValue(), i.getNext());
+                    i.setValue(i.getNext().getValue());
+                    i.getNext().setValue(currNode.getValue());
+                    permutation = true;
+                }
+            }
+        } while (permutation);
     }
 }
