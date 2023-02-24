@@ -216,4 +216,16 @@ public class MyLinkedList<T> {
             }
         } while (permutation);
     }
+
+    public T get(int needIndex) {
+        Node<T> needNode = null;
+        int index = 0;
+        for (Node<T> i = firstNode; i != null; i = i.getNext()) {
+            if (index == needIndex) {
+                needNode = i;
+            }
+            index++;
+        }
+        return needNode.getValue();
+    }
 }
