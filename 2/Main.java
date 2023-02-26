@@ -116,8 +116,8 @@ public class Main {
         Comparator<Ranking> comparator3 = (x, y) -> x.getStatus().compareTo(y.getStatus());
 
         System.out.println("-------------main-------------");
-        System.out.println("method 1 for Ranking: " + method1(rankingList));
-        System.out.println("method 1 for ExtendedRanking: " + method1(extendedRankingList));
+        method1(rankingList);
+        method1(extendedRankingList);
         extendedRankingList.sort(comparator2);
         method2(extendedRankingList, 3);
         int from = extendedRankingList.size() - 5;
@@ -128,18 +128,16 @@ public class Main {
         rankingList.sort(comparator3);
     }
 
-    public static List<Object> method1(List<? extends Ranking> list) {
-        List<Object> result = Arrays.asList(-1, -1);
+    public static void method1(List<? extends Ranking> list) {
         Comparator<Ranking> comparator = (x, y) -> x.getPoliticalRightsRating().compareTo(y.getPoliticalRightsRating());
         list.sort(comparator);
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getPoliticalRightsRating() == 5) {
-                result.set(0, list.get(i).getTerritory());
-                result.set(1, i);
+                System.out.println(list.get(i).getTerritory());
+                System.out.println(i);
                 break;
             }
         }
-        return result;
     }
 
     public static void method2(List<? super ExtendedRanking> list, int n) {
