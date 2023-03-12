@@ -75,12 +75,17 @@ public class MyLinkedList<T> {
     }
 
     public int indexOf(T s) {
+        boolean flag = false;
         int index = 0;
         for (Node<T> i = firstNode; i != null; i = i.getNext()) {
             if (i.getValue().equals(s)) {
+                flag = true;
                 break;
             }
             index++;
+        }
+        if (!flag) {
+            index = -1;
         }
         return index;
     }
