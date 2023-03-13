@@ -15,6 +15,8 @@ public class Billionaire {
     private String title;
     private int philanthropyScore;
 
+
+
     public Billionaire() {}
 
     public Billionaire( int rank, String personName, int age, int finalWorth, String category,
@@ -35,6 +37,10 @@ public class Billionaire {
         this.birthDate = birthDate;
         this.title = title;
         this.philanthropyScore = philanthropyScore;
+    }
+
+    public String getOrganization() {
+        return organization;
     }
 
     @Override
