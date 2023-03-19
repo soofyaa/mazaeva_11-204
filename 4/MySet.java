@@ -31,8 +31,9 @@ public class MySet<T> extends AbstractSet<T> implements SortedSet<T> {
 
         if (size() > 0 && array[array.length-1] == null) {
             array[array.length-1] = elem;
+            boolean added = (array[array.length-1] == elem);
             array = (T[]) Arrays.stream(array).sorted(comparator).toArray();
-            return array[array.length-1] == elem;
+            return added;
         }
 
         T[] newArray = (T[]) Array.newInstance(tClass, array.length+1);
