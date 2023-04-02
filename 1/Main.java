@@ -30,7 +30,5 @@ public class Main {
         a.removeAll(a1);
 
         System.out.println(a);
-
-
     }
 }
