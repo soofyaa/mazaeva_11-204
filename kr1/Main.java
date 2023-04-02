@@ -35,7 +35,6 @@ public class Main {
         В 1 строчку используя Stream API среди машин,
         которые ездят на бензине, найти самую дешевую и вывести.
          */
-
         System.out.println(cars.stream().filter(c -> c.getType().equals("Petrol")).min(Comparator.comparing(Car::getPrice)));
 
     }
