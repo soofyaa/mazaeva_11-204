@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -25,40 +24,6 @@ public class Main {
      */
 
     public static void main(String[] args) {
-        Map<String, String> users = new HashMap<>();
-        users.put("Иванов", "+7 (999) 123-45-67");
-        users.put("Петров", "+7 (999) 234-56-78");
-        users.put("Сидоров", "+7 (999) 345-67-89");
-        users.put("Кузнецов", "+7 (999) 456-78-90");
-        users.put("Смирнов", "+7 (999) 567-89-01");
-        users.put("Андреев", "+7 (999) 678-90-12");
-        users.put("Козлов", "+7 (999) 789-01-23");
-        users.put("Новиков", "+7 (999) 890-12-34");
-        users.put("Морозов", "+7 (999) 901-23-45");
-        users.put("Волков", "+7 (999) 012-34-56");
-        printNumbers(users);
-        System.out.println(replaceValueKey(users));
-        System.out.println(isValid(users));
-
-        Map<String, Integer> map1 = new HashMap<>();
-        map1.put("543",2);
-        map1.put("45",3);
-        map1.put("345",4);
-        map1.put("23",5);
-        map1.put("234",6);
-        System.out.println(map1);
-        removeAllElementsMoreN(map1, 3);
-        System.out.println(map1);
-
-        Map<String, String> map2 = new HashMap<>();
-        map2.put("we", "qwe");
-        map2.put("ewe", "qwe");
-        map2.put("cwe", "rwe");
-        map2.put("vwe", "qwe");
-        map2.put("twe", "twe");
-        map2.put("wye", "ywe");
-        map2.put("uwe", "cwe");
-        printTop(map2);
 
     }
 
@@ -91,13 +56,11 @@ public class Main {
         map.entrySet().removeIf(v -> v.getValue() > n);
     }
 
-    public static <K> void printTop(Map<K, String> map) {
-        System.out.println("top: " + map.values().stream()
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
-                .entrySet()
-                .stream()
-                .max(Map.Entry.comparingByValue())
-                .get()
+    public static <K> void printTopValue(Map<K, String> map) {
+        System.out.println("top value: " +
+                map.values().stream()
+                .max(Comparator.comparing(v -> Collections.frequency(map.values(), v)))
+                .orElse(null)
         );
     }
 }
