@@ -8,8 +8,6 @@ public class Main {
         tree.add(10);
         tree.add(6);
         tree.add(8);
-        tree.add(0);
-        tree.add(-1);
 
         System.out.println(tree);
        tree.writeToFile("test.txt");
