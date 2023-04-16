@@ -28,7 +28,6 @@ public class Main {
         a1.add(2);
 
         a.removeAll(a1);
-
         System.out.println(a);
     }
 }
