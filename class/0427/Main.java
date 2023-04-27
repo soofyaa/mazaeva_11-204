@@ -15,7 +15,6 @@ public class Main {
         byte[] bytes = new byte[inputStream.available()];
         inputStream.read(bytes);
         String json = new String(bytes);
-        ObjectMapper objectMapper = new ObjectMapper();
         List<User> user = new ObjectMapper().readValue(json, new TypeReference<List<User>>(){});
         System.out.println(user);
     }
