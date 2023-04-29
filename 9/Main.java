@@ -19,10 +19,9 @@ public class Main {
         System.out.println(myMap + " " + myMap.size());
         myMap.remove("clk");
         System.out.println(myMap + " " + myMap.size());
-        System.out.println(myMap.containsValue(25));
-        System.out.println(myMap.values());
+        myMap.remove("ad");
         System.out.println(myMap.entrySet());
-        System.out.println(myMap.keySet());
+
 
 
     }

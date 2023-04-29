@@ -75,9 +75,9 @@ public class MyMap<K extends Comparable<K>,V> implements Map<K,V> {
 
     @Override
     public Set<Entry<K, V>> entrySet() {
-        Set<Entry<K, V>> entries = new TreeSet<>(Map.Entry.comparingByKey());
-        entrySetHelper(root, entries);
-        return entries;
+        Set<Entry<K, V>> set = new TreeSet<>((k1, k2) -> k1.getKey().compareTo(k2.getKey()));
+        entrySetHelper(set, root);
+        return set;
     }
 
     @Override
@@ -109,13 +109,14 @@ public class MyMap<K extends Comparable<K>,V> implements Map<K,V> {
         keySetHelper(tree.getRight(), result);
     }
 
-    private void entrySetHelper(Tree<K, V> tree, Set<Entry<K, V>> entries) {
-        if (tree == null) {
+    private void entrySetHelper(Set<Entry<K, V>> set, Tree<K, V> node) {
+        if (node == null) {
             return;
         }
-        entrySetHelper(tree.getLeft(), entries);
-        entrySetHelper(tree.getRight(), entries);
-        entries.add(new AbstractMap.SimpleEntry<>(tree.key, tree.value));
+        entrySetHelper(set, node.left);
+        Entry<K,V> entry = new MyEntry<>(node.key, node.value);
+        set.add(entry);
+        entrySetHelper(set, node.right);
     }
 
 
@@ -236,6 +237,36 @@ public class MyMap<K extends Comparable<K>,V> implements Map<K,V> {
                 return true;
             }
             return right != null && right.treeContainsValue(value);
+        }
+    }
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    private static class MyEntry<K extends Comparable<K>, V> implements Map.Entry<K,V> {
+
+        private K key;
+        private V value;
+
+        @Override
+        public K getKey() {
+            return key;
+        }
+
+        @Override
+        public V getValue() {
+            return value;
+        }
+
+        @Override
+        public V setValue(V value) {
+            this.value = value;
+            return value;
+        }
+
+        public String toString() {
+            return key + "=" + value;
         }
     }
 }
