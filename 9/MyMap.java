@@ -57,6 +57,11 @@ public class MyMap<K extends Comparable<K>,V> implements Map<K,V> {
 
     @Override
     public void putAll(Map<? extends K, ? extends V> map) {
+        Iterator<? extends Map.Entry<? extends K, ? extends V>> iterator = map.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<? extends K, ? extends V> entry = iterator.next();
+            put(entry.getKey(), entry.getValue());
+        }
     }
 
     @Override
