@@ -15,5 +15,6 @@ public class Main {
         CustomThreadPoolExecutor customThreadPoolExecutor =
                 new CustomThreadPoolExecutor(10);
         customThreadPoolExecutor.execute(new MyRunnable());
+        customThreadPoolExecutor.shutdown();
     }
 }
