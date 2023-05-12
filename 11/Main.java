@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        Animal animal = new Animal(12,"Boris","White");
+        Animal animal = new Animal(12,"Boris","Blue");
         System.out.println(CheckValueAnnotationValidator
                 .isValid(animal));
     }
@@ -26,10 +26,10 @@ public class Main {
 
         private int age;
 
-        @CheckValue(range = "Boris")
+        @CheckValue(regex = "^(Boris|Pet)$")
         private String name;
 
-        @CheckValue(range = "White")
+        @CheckValue(regex = "^(Yellow|Green|Blue)$")
         private String color;
     }
 }

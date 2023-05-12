@@ -1,4 +1,6 @@
 import java.lang.reflect.Field;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 //public class CheckValueAnnotationValidator {
 //
@@ -23,9 +25,10 @@ public class CheckValueAnnotationValidator {
             if (field.isAnnotationPresent(CheckValue.class)) {
                 field.setAccessible(true);
                 CheckValue checkValue = field.getAnnotation(CheckValue.class);
-                String range = checkValue.range();
                 String value = field.get(object).toString();
-                isValid = isValid && value.matches(range);
+                Pattern pattern = Pattern.compile(checkValue.regex());
+                Matcher matcher = pattern.matcher(value);
+                isValid = isValid && matcher.matches();
             }
         }
         return isValid;
