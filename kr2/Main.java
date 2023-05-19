@@ -36,10 +36,11 @@ public class Main {
                 .collect(Collectors.toList());
         System.out.println(cocktailList);
         try (FileWriter writer = new FileWriter("test.txt")) {
-
+            for (int i = 0; i < cocktailList.size(); i++) {
+                String line = cocktailList.get(i).idDrink + " " + cocktailList.get(i).strDrink + " " + cocktailList.get(i).strGlass + "\n";
+                writer.write(line);
+            }
         }
-
-
 
 
 
