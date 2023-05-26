@@ -1,4 +1,4 @@
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -8,12 +8,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import java.util.*;
+import java.util.stream.*;
 
 public class Main {
 
@@ -22,7 +18,7 @@ public class Main {
         byte[] bytes = new byte[fileInputStream.available()];
         fileInputStream.read(bytes);
         String json = new String(bytes);
-        Cocktail cocktails = new ObjectMapper().readValue(json, new TypeReference<Cocktail>(){});
+        Cocktail cocktails = new ObjectMapper().readValue(json, Cocktail.class);
         System.out.println(cocktails);
         List<Drink> cocktailList = cocktails.getDrinks()
                 .stream()
@@ -42,15 +38,8 @@ public class Main {
                 writer.write(line);
             }
         }
-
-
-
-
-
     }
-
-
-
+    
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
@@ -75,4 +64,3 @@ public class Main {
         public ArrayList<Drink> drinks;
     }
 }
-
