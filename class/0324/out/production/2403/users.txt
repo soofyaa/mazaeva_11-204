@@ -1,5 +1,0 @@
-email,city,year
-a@a.a,moscow,2001
-b@b.b,kazan,2002
-c@c.c,moscow,2008
-v@v.v,moscow,2000
