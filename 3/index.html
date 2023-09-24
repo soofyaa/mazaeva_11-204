@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>HW-3</title>
+    <style>
+        .container {
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .left-side {
+            width: 60%;
+            float: left;
+        }
+
+        .right-side {
+            width: 40%;
+            float: left;
+        }
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid deeppink;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: deeppink;
+            color: white;
+        }
+
+        input {
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 80%;
+            box-sizing: border-box;
+        }
+
+        button,p {
+            font-size: 20px;
+            background-color: deeppink;
+            color: white;
+        }
+
+        p {
+            padding: 10px 10px;
+        }
+        button {
+            padding: 20px 50px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="left-side">
+        <form id="inputForm">
+            <label for="name">Имя</label><br><input id="name" type="text">
+            <br>
+            <label for="tel">Телефон</label><br><input id="tel" type="tel">
+            <br>
+            <label for="email">Почта</label><br><input id="email" type="email">
+            <br>
+            <button type="button" onclick="addItem()">Добавить</button>
+        </form>
+
+        <table id="table">
+            <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Телефон</th>
+                <th>Почта</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="right-side">
+        <p><b>ПРОВЕРКА ПАЛИНДРОМА</b></p>
+        <label for="palindrome">Палиндром</label><br><input id="palindrome" type="text">
+        <br>
+        <button type="button" onclick="checkPalindrome()">Проверить</button>
+        <p id="result"></p>
+    </div>
+</div>
+
+<script>
+    function addItem() {
+
+        var name = document.getElementById('name').value;
+        var tel = document.getElementById('tel').value;
+        var email = document.getElementById('email').value;
+
+        if (name === '' | tel === '' | email === '') {
+            alert("Пожалуйста, заполните все поля.")
+            return;
+        }
+
+        if (!isValidName(name)) {
+            alert("Пожалуйста, заполните поле Имя верно.");
+            return;
+        }
+
+        if (!isValidPhone(tel)) {
+            alert("Пожалуйста, заполните поле Телефон верно.");
+            return;
+        }
+
+        if (!isValidEmail(email)) {
+            alert("Пожалуйста, заполните поле Почта верно.");
+            return;
+        }
+
+        var table = document.getElementById('table');
+        var newRow = table.insertRow(table.rows.length);
+
+        newRow.insertCell(0).innerHTML = name;
+        newRow.insertCell(1).innerHTML = tel;
+        newRow.insertCell(2).innerHTML = email;
+
+        document.getElementById('inputForm').reset();
+    }
+
+    function isValidName(name) {
+        const nameRegex = /^[A-Za-zА-Яа-яЁё\s]+$/;
+        return nameRegex.test(name)
+    }
+
+    function isValidPhone(tel) {
+        const phoneRegex = /^\+\d{11}$/;
+        return phoneRegex.test(tel)
+    }
+
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email)
+    }
+
+    function checkPalindrome() {
+        var text = document.getElementById("palindrome").value;
+        if (text === '') {
+            alert("Пожалуйста, напишите палиндром.");
+            return;
+        }
+        var reversedText = text.toLowerCase().split("").reverse().join("");
+
+        if (text.toLowerCase() === reversedText) {
+            document.getElementById("result").textContent = "Палиндром :)";
+        } else {
+            document.getElementById("result").textContent = "Не палиндром :(";
+        }
+    }
+</script>
+</body>
+</html>
