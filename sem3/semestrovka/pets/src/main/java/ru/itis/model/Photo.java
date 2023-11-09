@@ -9,11 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class File {
+public class Photo {
     private int id;
-    private int userId;
-
-    private int petId;
-    private byte[] data;
+    private String photoData;
     private String username;
 }

@@ -2,6 +2,7 @@ package ru.itis.servlets;
 
 import lombok.SneakyThrows;
 import ru.itis.dao.FileDAO;
+import ru.itis.dao.PetDAO;
 import ru.itis.dao.UserDAO;
 import ru.itis.model.File;
 import ru.itis.model.User;
@@ -51,8 +52,14 @@ public class FileUploadServlet extends HttpServlet {
 
         int fileId = FileDAO.saveFile(file);
 
+
+
         if (avatarParam != null && avatarParam.equals("true")) {
-            UserDAO.updateAvatarId(user.getUsername(), fileId);
+            if (cameFromUser != null) {
+                UserDAO.updateAvatarId(user.getUsername(), fileId);
+            } else {
+                PetDAO.updateAvatarId(file.getPetId(), fileId);
+            }
         }
 
         if (cameFromUser == null) {

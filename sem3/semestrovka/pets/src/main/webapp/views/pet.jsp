@@ -3,9 +3,9 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Pet Profile</title>
+    <title>Pet</title>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pet.css">
+    <style><%@include file="/css/styles.css"%></style>
 </head>
 <body>
 <h1>Pet Profile</h1>
@@ -25,13 +25,13 @@
 </form>
 
 <form action="/petbook/file-upload" method="get">
-    <input type="submit" value="Add pet photo">
+    <input type="submit" value="Add pet file">
 </form>
 
 <c:if test="${not empty petPhotos}">
-    <div class="photo-grid">
+    <div class="file-grid">
         <c:forEach items="${petPhotos}" var="photoData">
-            <div class="photo-item">
+            <div class="file-item">
                 <img src="data:image/jpeg;base64,${photoData}" alt="Pet Photo">
             </div>
         </c:forEach>

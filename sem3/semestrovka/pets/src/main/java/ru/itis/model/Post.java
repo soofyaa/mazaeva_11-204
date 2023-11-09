@@ -5,7 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -15,4 +16,14 @@ public class Post {
     private int userId;
     private String title;
     private String postText;
+    private String username;
+    private List<Comment> comments;
 }
+/*
+CREATE TABLE posts (
+    id SERIAL PRIMARY KEY,
+    user_id INT,
+    title VARCHAR(255),
+    post_text TEXT
+);
+ */

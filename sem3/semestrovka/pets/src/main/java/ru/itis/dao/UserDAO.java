@@ -16,6 +16,7 @@ public class UserDAO {
     final private static String SQL_FIND_USER_BY_EMAIL = "SELECT * FROM users WHERE email = ?";
     final private static String SQL_UPDATE_USER_DESCRIPTION = "UPDATE users SET description = ? WHERE username = ?";
     final private static String SQL_UPDATE_USER_AVATAR_ID = "UPDATE users SET avatar_id = ? WHERE username = ?";
+    final private static String SQL_FIND_USERNAME_BY_ID = "SELECT * FROM users WHERE id = ?";
 
 
     @SneakyThrows
@@ -84,5 +85,17 @@ public class UserDAO {
         preparedStatement.setInt(1, avatarId);
         preparedStatement.setString(2, username);
         preparedStatement.executeUpdate();
+    }
+
+    @SneakyThrows
+    public static String findUserById(int userId) {
+        Connection connection = ConnectionContainer.getConnection();
+        PreparedStatement statement = connection.prepareStatement(SQL_FIND_USERNAME_BY_ID);
+        statement.setInt(1, userId);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getString("username");
+        }
+        return null;
     }
 }

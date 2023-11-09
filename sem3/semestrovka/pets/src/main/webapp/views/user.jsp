@@ -38,6 +38,10 @@
     <input type="submit" value="Add pet">
 </form>
 
+<form action="/petbook/add-post" method="get">
+    <input type="submit" value="Add post">
+</form>
+
 <form action="/petbook/user" method="post">
     <input type="hidden" name="logout" value="true">
     <input type="submit" value="log out">

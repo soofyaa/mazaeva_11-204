@@ -11,7 +11,7 @@
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
-    <javax.servlet.version>3.1.0</javax.servlet.version>
+    <javax.servlet.version>4.0.1</javax.servlet.version>
     <lombook.version>1.18.20</lombook.version>
     <postgresql.version>42.2.27</postgresql.version>
     <jstl.version>1.2</jstl.version>

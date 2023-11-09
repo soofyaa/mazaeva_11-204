@@ -5,29 +5,22 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-public class Pet {
+public class Comment {
     private int id;
+    private int postId;
     private int userId;
-    private String name;
-    private String description;
-
-    private int avatarId;
-    private List<Integer> picsId;
+    private String text;
     private String username;
 }
-
 /*
-CREATE TABLE pets (
+CREATE TABLE comments (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    description TEXT,
-    avatar_id INT,
-    pics INT[] DEFAULT ARRAY[]::INT[]
+    post_id INT,
+    user_id INT,
+    text TEXT
 );
  */
