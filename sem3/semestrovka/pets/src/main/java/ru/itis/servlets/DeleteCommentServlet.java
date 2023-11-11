@@ -1,7 +1,7 @@
 package ru.itis.servlets;
 
 
-import ru.itis.dao.CommentDAO;
+import ru.itis.services.CommentService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +16,9 @@ public class DeleteCommentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int commentId = Integer.parseInt(req.getParameter("commentId"));
         int postId = Integer.parseInt(req.getParameter("postId"));
-        CommentDAO.deleteCommentById(commentId);
-        resp.sendRedirect("/petbook/post/" + postId);
+
+        CommentService.deleteCommentById(commentId);
+
+        resp.sendRedirect(req.getContextPath() + "/post/" + postId);
     }
 }

@@ -1,0 +1,51 @@
+body {
+    background-color: #FCEED1;
+    color: #333; /* Черный цвет текста на белом фоне */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #FFFFFF; /* Белый цвет фона формы */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: #B8D4D7; /* Голубой цвет для кнопки отправки */
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #E6BABE; /* Измененный цвет при наведении */
+}
+
+a {
+    color: #D1CFE8; /* Фиолетовый цвет для ссылок */
+    text-decoration: none;
+
+}
+
+a:hover {
+    color: #A19DCA; /* Измененный цвет ссылок при наведении */
+}

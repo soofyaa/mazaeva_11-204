@@ -1,8 +1,6 @@
 package ru.itis.servlets;
 
-import ru.itis.dao.PostDAO;
-import ru.itis.model.User;
-import ru.itis.utils.SessionManager;
+import ru.itis.services.PostService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,16 +13,16 @@ import java.io.IOException;
 public class AddPostServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/views/add-post.jsp").forward(req, resp);
+        req.getRequestDispatcher("/views/add-post-page.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = SessionManager.getUserFromSession(req);
         String title = req.getParameter("title");
         String postText = req.getParameter("postText");
-        int postId = PostDAO.addPost(user.getId(), title, postText);
 
-        resp.sendRedirect("/petbook/post/" + postId);
+        int postId = PostService.addPost(req, title, postText);
+
+        resp.sendRedirect(req.getContextPath() + "/post/" + postId);
     }
 }

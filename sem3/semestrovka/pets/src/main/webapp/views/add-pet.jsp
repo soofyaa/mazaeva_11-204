@@ -1,21 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Добавить питомца</title>
+  <title>Add Pet</title>
+  <style><%@include file="/css/settings.css"%></style>
 </head>
 <body>
-<h1>Добавить нового питомца</h1>
+<h1>Add Your Pet</h1>
 
-<form action="/petbook/add-pet" method="post">
-  <label for="petName">Имя питомца:</label>
+<form action="${pageContext.request.contextPath}/add-pet" method="post">
+  <label for="petName">Pet Name:</label>
   <input type="text" id="petName" name="petName" required>
   <br>
-  <label for="petDescription">Описание:</label>
+  <label for="petDescription">Description:</label>
   <textarea id="petDescription" name="petDescription" rows="4" cols="50" required></textarea>
   <br>
-  <input type="submit" value="Добавить">
+  <input type="submit" value="Add">
 </form>
 </body>
 </html>

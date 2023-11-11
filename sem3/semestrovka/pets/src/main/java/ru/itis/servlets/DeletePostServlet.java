@@ -1,6 +1,6 @@
 package ru.itis.servlets;
 
-import ru.itis.dao.PostDAO;
+import ru.itis.services.PostService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +14,9 @@ public class DeletePostServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int postId = Integer.parseInt(req.getParameter("postId"));
-        PostDAO.deletePostById(postId);
-        resp.sendRedirect("/petbook/feed-posts");
+
+        PostService.deletePostById(postId);
+
+        resp.sendRedirect(req.getContextPath() + "/main/posts");
     }
 }

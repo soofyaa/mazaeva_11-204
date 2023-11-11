@@ -1,13 +1,13 @@
 package ru.itis.servlets;
 
 import ru.itis.services.SignInService;
+import ru.itis.utils.SessionManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/sign-in")
@@ -25,11 +25,10 @@ public class SignInServlet extends HttpServlet {
         boolean isAuthenticated = SignInService.authenticateUser(username, password);
 
         if (isAuthenticated) {
-            HttpSession session = request.getSession();
-            session.setAttribute("username", username);
-            response.sendRedirect("/petbook/user");
+            SessionManager.setAttribute(request, "username", username);
+            response.sendRedirect(request.getContextPath() + "/main/photos");
         } else {
-            request.setAttribute("errorMessage", "Неверное имя пользователя или пароль");
+            request.setAttribute("errorMessage", "The username or password you entered is incorrect.");
             request.getRequestDispatcher("/views/sign-in.jsp").forward(request, response);
         }
     }

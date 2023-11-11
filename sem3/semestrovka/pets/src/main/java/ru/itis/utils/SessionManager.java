@@ -21,9 +21,4 @@ public class SessionManager {
         HttpSession session = request.getSession();
         return session.getAttribute(attributeName);
     }
-
-    public static void removeAttribute(HttpServletRequest request, String attributeName) {
-        HttpSession session = request.getSession();
-        session.removeAttribute(attributeName);
-    }
 }

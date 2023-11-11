@@ -3,22 +3,26 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Вход</title>
+    <title>Sign In</title>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <style><%@include file="/css/sign-up-in.css"%></style>
+
 </head>
 <body>
-<h1>Вход пользователя</h1>
+
 <c:if test="${not empty errorMessage}">
-    <div class="error-message">${errorMessage}</div>
+    <script type="text/javascript">
+        alert("${errorMessage}");
+    </script>
 </c:if>
-<form action="/petbook/sign-in" method="POST">
-    <label for="username">Имя пользователя:</label>
+<form action="${pageContext.request.contextPath}/sign-in" method="post">
+    <label for="username">Username:</label>
     <input id="username" type="text" name="username" required><br>
 
-    <label for="password">Пароль:</label>
+    <label for="password">Password:</label>
     <input id="password" type="password" name="password" required><br>
 
-    <input type="submit" value="Войти">
+    <input type="submit" value="Sign In">
 </form>
 </body>
 </html>

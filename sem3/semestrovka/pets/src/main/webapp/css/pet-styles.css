@@ -1,0 +1,30 @@
+.avatar {
+  object-fit: cover; /* Обрезать и подгонять изображение под размер блока */
+  width: 300px; /* Ограничение максимальной ширины изображения */
+  height: 300px; /* Ограничение максимальной высоты изображения */
+  display: block;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px; /* Увеличено расстояние между элементами */
+  padding: 10px; /* Добавлены отступы для визуального пространства вокруг сетки */
+}
+
+.photo-item {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: #FFFFFF; /* Белый фон для каждого элемента */
+
+}
+
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+}

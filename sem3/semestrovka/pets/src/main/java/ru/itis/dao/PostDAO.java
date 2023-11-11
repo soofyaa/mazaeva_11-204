@@ -15,6 +15,7 @@ public class PostDAO {
     final private static String SQL_ADD_POST = "INSERT INTO posts (user_id, title, post_text) VALUES (?, ?, ?)";
     final private static String SQL_FIND_POST_BY_ID = "SELECT * FROM posts WHERE id = ?";
     final private static String SQL_DELETE_POST_BY_ID = "DELETE FROM posts WHERE id = ?";
+    final private static String SQL_FIND_USER_ID_BY_POST_ID = "SELECT user_id FROM posts WHERE id = ?";
     final private static String SQL_GET_ALL_POSTS_WHITH_USERNAMES =
             """
             SELECT posts.id, posts.user_id, users.username, posts.title, posts.post_text
@@ -97,5 +98,20 @@ public class PostDAO {
         statement.setInt(1, postId);
 
         statement.executeUpdate();
+    }
+
+    @SneakyThrows
+    public static int findUserIdByPostId(int postId) {
+        Connection connection = ConnectionContainer.getConnection();
+        PreparedStatement statement = connection.prepareStatement(SQL_FIND_USER_ID_BY_POST_ID);
+
+        statement.setInt(1, postId);
+
+        ResultSet resultSet = statement.executeQuery();
+
+        if (resultSet.next()) {
+            return resultSet.getInt("user_id");
+        }
+        return -1;
     }
 }

@@ -11,6 +11,11 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Photo {
     private int id;
-    private String photoData;
+    private int userId;
+
+    private int petId;
+    private byte[] data;
     private String username;
+    private String photoData;
+    private String petName;
 }

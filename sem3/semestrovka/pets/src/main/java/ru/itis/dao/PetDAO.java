@@ -47,15 +47,14 @@ public class PetDAO {
             String petName = resultSet.getString("name");
             String petDescription = resultSet.getString("description");
             int avatarId = resultSet.getInt("avatar_id");
-            List<Integer> picsId = FileDAO.getPetPicsById(petId); // Получаем список picsId
+            List<Integer> photoIds = PhotoDAO.getPetPhotoIdsByPetId(petId); // Получаем список picsId
 
             Pet pet = new Pet();
             pet.setId(petId);
             pet.setName(petName);
             pet.setDescription(petDescription);
             pet.setAvatarId(avatarId);
-            pet.setPicsId(picsId);
-
+            pet.setPhotoIds(photoIds);
             return pet;
         }
 

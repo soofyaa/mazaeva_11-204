@@ -13,13 +13,14 @@ import java.util.List;
 @Builder
 public class Pet {
     private int id;
-    private int userId;
+//    private int userId;
     private String name;
     private String description;
-
     private int avatarId;
-    private List<Integer> picsId;
-    private String username;
+    private List<Integer> photoIds;
+    private List<String> owners;
+    private String avatarData;
+    private List<String> photosData;
 }
 
 /*
@@ -28,6 +29,5 @@ CREATE TABLE pets (
     name VARCHAR(255) NOT NULL,
     description TEXT,
     avatar_id INT,
-    pics INT[] DEFAULT ARRAY[]::INT[]
 );
  */

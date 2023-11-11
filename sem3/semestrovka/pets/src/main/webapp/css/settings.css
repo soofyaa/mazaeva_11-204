@@ -1,0 +1,49 @@
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #D1CFE8; /* фиолетовый */
+  color: #333; /* черный текст */
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  background-color: #B8D4D7; /* голубой */
+  color: #fff; /* белый текст */
+  padding: 15px;
+  margin: 0;
+}
+
+form {
+  margin: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input[type="file"],
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  background-color: #A19DCA; /* фиолетовый */
+  color: #fff; /* белый текст */
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #E6BABE; /* светло-коралловый */
+}
+
+input[readonly] {
+  background-color: #FCEED1; /* светло-розовый */
+}

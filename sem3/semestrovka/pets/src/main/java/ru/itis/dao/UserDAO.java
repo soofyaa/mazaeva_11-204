@@ -17,6 +17,7 @@ public class UserDAO {
     final private static String SQL_UPDATE_USER_DESCRIPTION = "UPDATE users SET description = ? WHERE username = ?";
     final private static String SQL_UPDATE_USER_AVATAR_ID = "UPDATE users SET avatar_id = ? WHERE username = ?";
     final private static String SQL_FIND_USERNAME_BY_ID = "SELECT * FROM users WHERE id = ?";
+    final private static String SQL_FIND_USER_BY_ID = "SELECT * FROM users WHERE id = ?";
 
 
     @SneakyThrows
@@ -56,17 +57,7 @@ public class UserDAO {
         statement.setString(1, username);
         ResultSet resultSet = statement.executeQuery();
 
-        if (resultSet.next()) {
-            User user = new User();
-            user.setId(resultSet.getInt("id"));
-            user.setUsername(resultSet.getString("username"));
-            user.setPassword(resultSet.getString("password"));
-            user.setEmail(resultSet.getString("email"));
-            user.setDescription(resultSet.getString("description"));
-            user.setAvatarId(resultSet.getInt("avatar_id"));
-            return user;
-        }
-        return null;
+        return getUser(resultSet);
     }
 
     @SneakyThrows
@@ -88,13 +79,37 @@ public class UserDAO {
     }
 
     @SneakyThrows
-    public static String findUserById(int userId) {
+    public static String findUsernameById(int userId) {
         Connection connection = ConnectionContainer.getConnection();
         PreparedStatement statement = connection.prepareStatement(SQL_FIND_USERNAME_BY_ID);
         statement.setInt(1, userId);
         ResultSet resultSet = statement.executeQuery();
         if (resultSet.next()) {
             return resultSet.getString("username");
+        }
+        return null;
+    }
+
+    @SneakyThrows
+    public static User findUserById(int userId) {
+        Connection connection = ConnectionContainer.getConnection();
+        PreparedStatement statement = connection.prepareStatement(SQL_FIND_USER_BY_ID);
+        statement.setInt(1, userId);
+        ResultSet resultSet = statement.executeQuery();
+
+        return getUser(resultSet);
+    }
+
+    private static User getUser(ResultSet resultSet) throws SQLException {
+        if (resultSet.next()) {
+            User user = new User();
+            user.setId(resultSet.getInt("id"));
+            user.setUsername(resultSet.getString("username"));
+            user.setPassword(resultSet.getString("password"));
+            user.setEmail(resultSet.getString("email"));
+            user.setDescription(resultSet.getString("description"));
+            user.setAvatarId(resultSet.getInt("avatar_id"));
+            return user;
         }
         return null;
     }

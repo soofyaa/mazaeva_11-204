@@ -1,6 +1,6 @@
 package ru.itis.servlets;
 
-import ru.itis.dao.FileDAO;
+import ru.itis.services.PhotoService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +14,9 @@ public class DeletePhotoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int photoId = Integer.parseInt(req.getParameter("photoId"));
-        FileDAO.deleteFileById(photoId);
-        resp.sendRedirect("/petbook/feed-photos");
+
+        PhotoService.deletePhotoById(photoId);
+
+        resp.sendRedirect(req.getContextPath() + "/main/photos");
     }
 }
