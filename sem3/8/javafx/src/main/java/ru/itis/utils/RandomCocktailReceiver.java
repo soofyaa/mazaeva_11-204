@@ -1,56 +1,45 @@
 package ru.itis.utils;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.SneakyThrows;
+
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.List;
 
 public class RandomCocktailReceiver {
+    private static final String API_URL = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+
+    @SneakyThrows
     public static Cocktail getRandomCocktail() throws IOException {
-        URL url = new URL("https://www.thecocktaildb.com/api/json/v1/1/random.php");
+        URL url = new URL(API_URL);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+        try (InputStream inputStream = connection.getInputStream();
+             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+             BufferedReader reader = new BufferedReader(inputStreamReader)) {
+
             StringBuilder response = new StringBuilder();
             String line;
+
             while ((line = reader.readLine()) != null) {
                 response.append(line);
             }
 
-            String strDrink = extractValue(response.toString(), "\"strDrink\":\"(.*?)\"");
-            String strInstructions = extractValue(response.toString(), "\"strInstructions\":\"(.*?)\"");
-            String strAlcoholic = extractValue(response.toString(), "\"strAlcoholic\":\"(.*?)\"");
-            String strGlass = extractValue(response.toString(), "\"strGlass\":\"(.*?)\"");
-            String strDrinkThumb = extractValue(response.toString(), "\"strDrinkThumb\":\"(.*?)\"");
+            String json = response.toString();
+            System.out.println("Received JSON: " + json);
 
-            StringBuilder strIngredientsBuilder = new StringBuilder();
-            for (int i = 1; i <= 3; i++) {
-                String ingredient = extractValue(response.toString(), "\"strIngredient" + i + "\":\"(.*?)\"");
+            Cocktail cocktail = new ObjectMapper().readValue(json, Cocktail.class);
+            System.out.println("Parsed Cocktail: " + cocktail);
 
-                if (!ingredient.trim().isEmpty()) {
-                    if (strIngredientsBuilder.length() > 0) {
-                        strIngredientsBuilder.append(", ");
-                    }
-                    strIngredientsBuilder.append(ingredient);
-                }
-            }
-            String strIngredients = strIngredientsBuilder.toString();
-
-            return new Cocktail(strDrink, strInstructions, strAlcoholic, strGlass, strIngredients, strDrinkThumb);
+            return cocktail;
         } finally {
             connection.disconnect();
         }
-    }
-
-    private static String extractValue(String input, String pattern) {
-        Pattern p = Pattern.compile(pattern);
-        Matcher m = p.matcher(input);
-        if (m.find()) {
-            return m.group(1);
-        }
-        return "";
     }
 }

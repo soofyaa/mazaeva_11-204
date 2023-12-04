@@ -46,33 +46,38 @@ public class HelloApplication extends Application {
     }
 
     private void showCocktailDetails(Cocktail cocktail) {
-        Stage dialogStage = new Stage();
-        dialogStage.setTitle(cocktail.getStrDrink());
-        dialogStage.initModality(Modality.WINDOW_MODAL);
+
+        Stage stage = new Stage();
+        stage.setTitle(cocktail.getDrinks().get(0).getStrDrink());
+        stage.initModality(Modality.WINDOW_MODAL);
 
         VBox dialogVBox = new VBox(10);
 
         VBox nameLabelVBox = new VBox();
         nameLabelVBox.setAlignment(Pos.CENTER);
-        Label nameLabel = new Label(cocktail.getStrDrink());
+        Label nameLabel = new Label(cocktail.getDrinks().get(0).getStrDrink());
         nameLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         nameLabelVBox.getChildren().add(nameLabel);
 
-        Label instructionsLabel = new Label("Instructions: " + cocktail.getStrInstructions());
-        Label alcoholicLabel = new Label("Alcoholic: " + cocktail.getStrAlcoholic());
-        Label glassLabel = new Label("Glass: " + cocktail.getStrGlass());
-        Label ingredientsLabel = new Label("Ingredients: " + cocktail.getStrIngredients());
+        Label instructionsLabel = new Label("Instructions: " + cocktail.getDrinks().get(0).getStrInstructions());
+        Label alcoholicLabel = new Label("Alcoholic: " + cocktail.getDrinks().get(0).getStrAlcoholic());
+        Label glassLabel = new Label("Glass: " + cocktail.getDrinks().get(0).getStrGlass());
+        Label ingredientsLabel = new Label("Ingredients: " + cocktail.getDrinks().get(0).getStrIngredient1() + ", " +
+                cocktail.getDrinks().get(0).getStrIngredient2() + ", " + cocktail.getDrinks().get(0).getStrIngredient3());
+        ImageView imageView = new ImageView();
 
-        Image image = new Image(cocktail.getStrDrinkThumb().replaceAll("\\\\", ""));
-        ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(512);
-        imageView.setPreserveRatio(true);
+        if (cocktail.getDrinks().get(0).getStrDrinkThumb() != null) {
+            Image image = new Image(cocktail.getDrinks().get(0).getStrDrinkThumb().replaceAll("\\\\", ""));
+            imageView = new ImageView(image);
+            imageView.setFitHeight(512);
+            imageView.setPreserveRatio(true);
+        }
 
         dialogVBox.getChildren().addAll(nameLabelVBox, instructionsLabel, alcoholicLabel, glassLabel, ingredientsLabel, imageView);
 
-        Scene dialogScene = new Scene(dialogVBox, 512, 720);
-        dialogStage.setScene(dialogScene);
-        dialogStage.showAndWait();
+        Scene scene = new Scene(dialogVBox, 512, 720);
+        stage.setScene(scene);
+        stage.showAndWait();
     }
 
     public static void main(String[] args) {
