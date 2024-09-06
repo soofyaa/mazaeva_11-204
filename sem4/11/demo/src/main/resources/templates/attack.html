@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page</title>
+</head>
+<script>
+    function httpGet(theUrl)
+    {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", theUrl, false);
+        xmlHttp.send(null);
+        alert(xmlHttp.responseText);
+    }
+</script>
+<body>
+<input type="submit" value="Нажми на меня" onclick="httpGet('http://localhost:8080/hello')">
+</body>
+</html>

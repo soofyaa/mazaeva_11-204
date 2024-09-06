@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+.form-style-3 {
+    max-width: 800px; /* Увеличиваем максимальную ширину формы */
+    margin: 0 auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-style-3 fieldset {
+    border: none;
+}
+
+.form-style-3 legend {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-style-3 label {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.form-style-3 label span {
+    font-weight: bold;
+}
+
+.form-style-3 .input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-style-3 .required {
+    color: red;
+}
+
+.form-style-3 input[type="submit"] {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-style-3 input[type="submit"]:hover {
+    background: #0056b3;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+}
+
+/* Стили для таблицы пользователей */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.form-style-3 input[type="submit"]:hover {
+    background: #0056b3;
+}
+
+.note {
+    font-style: italic;
+    color: red;
+}
