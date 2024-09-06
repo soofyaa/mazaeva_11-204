@@ -1,0 +1,166 @@
+body {
+    background-color: #1c1c1c;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.main-container {
+    background-color: #1c1c1c;
+    display: flex;
+    justify-content: space-between;
+    width: 1200px; /* максимальная ширина для всей контейнерной области */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container {
+    background-color: #1c1c1c;
+}
+
+.button-container img {
+    width: 60%;
+    height: 60%;
+    object-fit: cover; /* Это свойство позволяет изображению заполнить контейнер сохраняя пропорции и обрезая лишнее */
+}
+
+.profile-container {
+    flex: 1; /* Занимает всю доступную ширину */
+    width: 850px;
+    height: 180px;
+    padding: 40px;
+    background-color: #2c2c2c;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-right: 10px; /* Отступ между контейнерами */
+}
+
+.watchlists {
+    flex: 1; /* Занимает всю доступную ширину */
+    width: 850px;
+    padding: 40px;
+    background-color: #2c2c2c;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-right: 10px; /* Отступ между контейнерами */
+    margin-top: 20px;
+}
+
+.button-container {
+    padding: 20px;
+    background-color: #2c2c2c;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирование кнопок по горизонтали */
+    justify-content: center;
+    gap: 10px; /* Расстояние между кнопками */
+    height: 220px;
+    width: 200px;
+    text-align: center;
+}
+
+h1 {
+    color: #ff69b4;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    display: block;
+    max-width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.profile-details, .watchlists {
+    text-align: center;
+}
+
+p {
+    margin: 10px 0;
+}
+
+strong {
+    color: #ffab00;
+}
+
+.profile-button, .settings-button {
+    display: block;
+    width: 200px;
+    margin: 0 auto 20px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.admin-button {
+    width: 200px;
+    cursor: pointer;
+    border: none;
+}
+
+.admin-button:hover {
+    background-color: #ff69b4;
+    color: white;
+}
+
+.user-list {
+    background-color: #333;
+    border: 1px solid #1c1c1c;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.3s;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.user-list:hover {
+    transform: scale(1.05);
+}
+
+.user-list img {
+    width: 100%;
+    height: 160px;
+    border-radius: 8px;
+    object-fit: cover;
+
+}
+
+.user-list p {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #ffffff;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to two lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ellipsis for overflow text */
+}
+
+.watchlists-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+a {
+    color: inherit; /* Цвет текста будет наследоваться от родителя */
+    text-decoration: none; /* Убираем подчеркивание */
+}
+
+a:hover, a:focus {
+    color: inherit; /* Убираем изменение цвета при наведении и фокусе */
+    text-decoration: none; /* Убираем подчеркивание при наведении и фокусе */
+}
