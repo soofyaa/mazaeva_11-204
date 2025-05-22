@@ -12,5 +12,9 @@ public class Main1 {
 		b = a - b;
 		a = a - b;
 		System.out.println("After: a = " + a + ", b = " + b);
+		System.out.println("After: a = " + a + ", b = " + b);
+
 	}
+
+
 }
