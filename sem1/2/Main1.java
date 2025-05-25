@@ -22,6 +22,7 @@ public class Main1 {
 
 		System.out.println("After: a = " + a + ", b = " + b);
 
+		System.out.println("After: a = " + a + ", b = " + b);
 
 
 		System.out.println("After: a = " + a + ", b = " + b);
